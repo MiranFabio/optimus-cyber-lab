@@ -1,8 +1,4 @@
 
-
-# 🛡️ Optimus Backup System
-
-
 # 🛡️ Optimus Backup System
 
 <div align="center">
