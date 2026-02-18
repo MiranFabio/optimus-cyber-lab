@@ -28,4 +28,4 @@ def verificar_saude_disco():
     print(f"Memória RAM em uso: {ram.percent}%")
 
 if __name__ == "__main__":
-    verificar_saude_disco()s
+    verificar_saude_disco()
