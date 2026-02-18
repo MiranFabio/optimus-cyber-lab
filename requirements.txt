@@ -1,0 +1,7 @@
+#Serve para você não perder tempo. No cliente, você não digita comando por comando; 
+#você roda um comando só e o PC 
+#dele se prepara para o seu backup em 
+#segundos.
+
+psutil
+boto3
