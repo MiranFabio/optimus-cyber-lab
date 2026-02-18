@@ -1,31 +1,33 @@
-import psutil # Biblioteca para ler estatísticas do sistema (disco, CPU, RAM)
-import shutil # Biblioteca para operações de arquivos e espaço
+import psutil
+import shutil
 
-def verificar_saude_disco():
-    print("--- 🛡️ MONITOR DE SAÚDE: ECOSSISTEMA OPTIMUS ---")
+def monitorar_infraestrutura():
+    print("\n--- 🛡️ MONITOR DE SAÚDE: ECOSSISTEMA OPTIMUS ---")
     
-    # 1. Captura os dados do disco C:
-    # total: total de espaço | used: usado | free: livre
+    # Verificação de Disco
     total, usado, livre = shutil.disk_usage("C:/")
+    percentual_livre = (livre / total) * 100
+    print(f"📊 DISCO C: {percentual_livre:.2f}% Livre ({livre // (2**30)}GB)")
 
-    # 2. Converte de bytes para Gigabytes (GB)
-    total_gb = total // (2**30)
-    livre_gb = livre // (2**30)
-    porcentagem_livre = (livre / total) * 100
-
-    print(f"Disco C: | Total: {total_gb}GB | Livre: {livre_gb}GB")
-    print(f"Espaço Disponível: {porcentagem_livre:.2f}%")
-
-    # 3. Lógica de Alerta (O Pulo do Gato para o Cliente)
-    if porcentagem_livre < 15:
-        print("\n🚨 ALERTA CRÍTICO: Espaço em disco abaixo de 15%!")
-        print("Ação recomendada: Mover arquivos pesados para o Disco E: imediatamente.")
-    else:
-        print("\n✅ Sistema Operacional saudável.")
-
-    # 4. Verifica o uso da Memória RAM (Bônus de Observabilidade)
+    # Verificação de RAM
     ram = psutil.virtual_memory()
-    print(f"Memória RAM em uso: {ram.percent}%")
+    print(f"🧠 MEMÓRIA RAM: {ram.percent}% em uso")
+
+    # 🔥 O PULO DO GATO: Listar os 3 processos mais pesados
+    print("\n🕵️ Caça-Vilões (Top 3 Consumo de RAM):")
+    processos = []
+    for proc in psutil.process_iter(['name', 'memory_info']):
+        try:
+            # Pega o nome do programa e quanto ele gasta de memória em MB
+            mem = proc.info['memory_info'].rss / (1024 * 1024)
+            processos.append((proc.info['name'], mem))
+        except (psutil.NoSuchProcess, psutil.AccessDenied):
+            pass
+    
+    # Ordena do maior para o menor e pega os 3 primeiros
+    processos.sort(key=lambda x: x[1], reverse=True)
+    for i, (nome, mem) in enumerate(processos[:3], 1):
+        print(f"  {i}. {nome}: {mem:.2f} MB")
 
 if __name__ == "__main__":
-    verificar_saude_disco()
+    monitorar_infraestrutura()
