@@ -1,0 +1,28 @@
+# Python - Arquivos de tradução (Cache)
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ambiente Virtual (Onde ficam as bibliotecas instaladas)
+.venv/
+venv/
+env/
+Scripts/
+lib/
+bin/
+
+# Configurações do Cliente e Segredos (Segurança de Dados)
+config.ini
+.env
+
+# Arquivos gerados pelo VS Code ou Sistema Operacional
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
+
+# Pasta de criação do Executável (.exe)
+dist/
+build/
+*.spec
