@@ -1,15 +1,28 @@
-# Python - Arquivos de tradução (Cache)
+# --- PROTEÇÃO DE PROPRIEDADE INTELECTUAL OPTIMUS ---
+# Bloqueia o código-fonte real para não dar munição à concorrência
+main.py
+core/
+utils/
+config.ini
+instrucoes.txt
+
+# --- SEGURANÇA E CREDENCIAIS ---
+.env
+*.pem
+aws_keys.txt
+credentials.json
+
+# --- ARQUIVOS DE SISTEMA E CACHE ---
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
-
-# Ambiente Virtual (Onde ficam as bibliotecas instaladas)
 .venv/
 venv/
 env/
 Scripts/
 lib/
+.vscode/
 bin/
 
 # Configurações do Cliente e Segredos (Segurança de Dados)
